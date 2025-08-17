@@ -8,7 +8,7 @@
   "build": "node node_modules/vite/bin/vite.js build",
   "lint": "eslint .",
   "preview": "vite preview"
-}
+},
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.14.4",
     "@tailwindcss/vite": "^4.1.11",
