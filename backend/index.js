@@ -1,4 +1,3 @@
-// -------------------- IMPORTS --------------------
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -10,58 +9,46 @@ const geminiResponse = require("./gemini");
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
 
-// -------------------- APP CONFIG --------------------
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// -------------------- MIDDLEWARES --------------------
+// Allowed origins for CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://echomind-do2h.onrender.com"
+];
 
-// Parse incoming JSON requests
-app.use(express.json());
-
-// Enable CORS (for frontend-backend communication)
+// Enable CORS with dynamic origin check
 app.use(
   cors({
-    origin: "https://echomind-do2h.onrender.com",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like curl or mobile apps)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
 
-// Enable cookie parsing for authentication/session
+// Handle preflight OPTIONS requests for all routes
+app.options("*", cors());
+
+// Body parsing middleware
+app.use(express.json());
+
+// Cookie parsing middleware
 app.use(cookieParser());
 
-// -------------------- ROUTES --------------------
-
-// Auth related routes
+// Routes
 app.use("/api/auth", authRouter);
-
-// User related routes
 app.use("/api/user", userRouter);
 
-// -------------------- TEST ROUTE (optional) --------------------
-// Uncomment to test Gemini integration
-/*
-app.get("/", async (req, res) => {
-  const prompt = req.query.prompt;
-
-  if (prompt) {
-    try {
-      const data = await geminiResponse(prompt);
-      return res.json(data);
-    } catch (err) {
-      return res.status(500).json({
-        error: "Gemini failed",
-        details: err.message,
-      });
-    }
-  }
-
-  return res.send("Hello from the server!");
-});
-*/
-
-// -------------------- SERVER START --------------------
+// Start server and connect to DB
 app.listen(PORT, () => {
-  connectdb(); // Connect to database before accepting requests
+  connectdb();
   console.log(`✅ Server started on port ${PORT}`);
 });
