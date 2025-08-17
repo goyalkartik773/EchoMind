@@ -22,7 +22,7 @@ app.use(express.json());
 // Enable CORS (for frontend-backend communication)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://echomind-do2h.onrender.com",
     credentials: true,
   })
 );
