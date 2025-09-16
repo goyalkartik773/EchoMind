@@ -20,17 +20,20 @@ EchoMind helps perform tasks, manage data, and interact seamlessly through a cle
  
 # Project Screenshots
 
-### Home Page
-![Screenshot 1](./Screenshot%202025-09-15%20082910.png)
+### SignUp page
+![Screenshot 1](./Screenshot 2025-09-16 200819.png)
 
-### Form Page
-![Screenshot 2](./Screenshot%202025-09-15%20083010.png)
+### SignIn page
+![Screenshot 2](./Screenshot 2025-09-16 200841.png)
 
-### DashBoard
-![Screenshot 3](./Screenshot%202025-09-15%20083046.png)
+### Select AssistantImage
+![Screenshot 3](./Screenshot 2025-09-16 200933.png)
 
-### Import
-![Screenshot 4](./Screenshot%202025-09-15%20083129.png)
+### Select AssistantName
+![Screenshot 4](./Screenshot 2025-09-16 201028.png)
+
+### Virtual Talk
+![Screenshot 4](./Screenshot 2025-09-16 200947.png)
 
 ## 💡 Key Learnings
 
@@ -51,10 +54,8 @@ I’m always open to feedback, suggestions, and collaboration! Feel free to open
 
 ## 📢 Connect & Follow
 
-- **LinkedIn:** [Your LinkedIn](https://linkedin.com/in/your-profile)  
-- **Twitter:** [Your Twitter](https://twitter.com/yourhandle)  
+- **LinkedIn:** [Your LinkedIn](https://linkedin.com/in/https://x.com/goelKartik773?s=08)  
 
----
 
 
 *Thank you for checking out EchoMind!*  
