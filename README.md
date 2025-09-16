@@ -1,4 +1,4 @@
-# 🚀 EchoMind - Virtual Assistant Built with MERN Stack 🚀
+# 🚀 EchoMind - Virtual Assistant Built with MERN Stack 
 
 Welcome to **EchoMind**, a smart virtual assistant designed to combine modern web technologies with intelligent automation.  
 EchoMind helps perform tasks, manage data, and interact seamlessly through a clean and responsive UI.
