@@ -30,10 +30,10 @@ EchoMind helps perform tasks, manage data, and interact seamlessly through a cle
 ![Screenshot 3](<./Screenshot 2025-09-16 200933.png>)
 
 ### Select AssistantName
-![Screenshot 4](<./Screenshot 2025-09-16 201028.png>)
+![Screenshot 4](<./Screenshot 2025-09-16 200947.png>)
 
 ### Virtual Talk
-![Screenshot 4](<./Screenshot 2025-09-16 200947.png>)
+![Screenshot 4](<./Screenshot 2025-09-16 201028.png>)
 
 ## 💡 Key Learnings
 
