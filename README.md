@@ -59,4 +59,4 @@ I’m always open to feedback, suggestions, and collaboration! Feel free to open
 
 
 *Thank you for checking out EchoMind!*  
-Made with ❤️ by [Your Name]
+Made with ❤️ by [Kartik Goel]
