@@ -21,19 +21,19 @@ EchoMind helps perform tasks, manage data, and interact seamlessly through a cle
 # Project Screenshots
 
 ### SignUp page
-![Screenshot 1](./Screenshot 2025-09-16 200819.png)
+![Screenshot 1](<./Screenshot 2025-09-16 200819.png>)
 
 ### SignIn page
-![Screenshot 2](./Screenshot 2025-09-16 200841.png)
+![Screenshot 2](<./Screenshot 2025-09-16 200841.png>)
 
 ### Select AssistantImage
-![Screenshot 3](./Screenshot 2025-09-16 200933.png)
+![Screenshot 3](<./Screenshot 2025-09-16 200933.png>)
 
 ### Select AssistantName
-![Screenshot 4](./Screenshot 2025-09-16 201028.png)
+![Screenshot 4](<./Screenshot 2025-09-16 201028.png>)
 
 ### Virtual Talk
-![Screenshot 4](./Screenshot 2025-09-16 200947.png)
+![Screenshot 4](<./Screenshot 2025-09-16 200947.png>)
 
 ## 💡 Key Learnings
 
