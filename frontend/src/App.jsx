@@ -7,22 +7,26 @@ import './App.css'
 import Home from './pages/Home'
 import Customize from './pages/Customize'
 import Customize2 from './pages/Customize2';
+import Demo from './pages/Demo';
+import Landing from './pages/Landing';
 import { useContext } from 'react';
 import { UserDataContext } from "./context/UserDataContext";
 
 
 function App() {
-  const {userData} = useContext(UserDataContext);
+  const { userData } = useContext(UserDataContext);
   return (
-    
-      <BrowserRouter>
+
+    <BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />
       <Routes>
-        <Route path="/" element={(userData?.AssistantImage && userData?.AssistantName)?<Home/>:<Navigate to={"/Customize"}/>}></Route>
-        <Route path="/signup" element={!userData?<Signup />:<Navigate to={"/"}/>}/>
-        <Route path="/signin" element={!userData?<Signin />:<Navigate to={"/"}/>} />
-        <Route path="/Customize" element={userData?<Customize/>:<Navigate to={"/signin"}/>}/>
-        <Route path="/Customize2" element={userData?<Customize2/>:<Navigate to={"/signup"}/>}/>
+        <Route path="/" element={!userData ? <Landing /> : (userData?.AssistantImage && userData?.AssistantName) ? <Home /> : <Navigate to={"/Customize"} />} />
+        <Route path="/home" element={(userData?.AssistantImage && userData?.AssistantName) ? <Home /> : <Navigate to={"/Customize"} />} />
+        <Route path="/demo" element={<Demo />} />
+        <Route path="/signup" element={!userData ? <Signup /> : <Navigate to={"/home"} />} />
+        <Route path="/signin" element={!userData ? <Signin /> : <Navigate to={"/home"} />} />
+        <Route path="/Customize" element={userData ? <Customize /> : <Navigate to={"/signin"} />} />
+        <Route path="/Customize2" element={userData ? <Customize2 /> : <Navigate to={"/signup"} />} />
       </Routes>
     </BrowserRouter>
   )
