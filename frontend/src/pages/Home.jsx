@@ -248,7 +248,7 @@
 //     onClick={handleLogOut}
 //     className="min-w-[120px] h-[50px] flex items-center justify-start px-6 py-3 overflow-hidden font-medium bg-white rounded"
 //   >
-    
+
 //     <span className="relative w-full text-left text-black">
 //       Log Out
 //     </span>
@@ -258,7 +258,7 @@
 //     onClick={() => navigate("/Customize")}
 //     className="min-w-[220px] h-[50px] flex items-center justify-start px-6 py-3 overflow-hidden font-medium bg-white rounded mt-4"
 //   >
-    
+
 //     <span className="relative w-full text-left text-black">
 //       Customize Assistant
 //     </span>
@@ -308,7 +308,7 @@
 //             {!aiText &&  <img src={img2} alt="audio1"/>}
 //              {aiText &&  <img src={img1} alt="audio2"/>}
 //              {/* {!aiText &&  <JarvisPage/>} */}
-        
+
 
 //             <h1 className="text-white text-[15px] font-semibold text-wrap">{userText?userText:aiText?aiText:null}</h1>
 //         </div>
@@ -334,17 +334,17 @@ function Home() {
     const navigate = useNavigate();
 
     // State for storing user speech input and AI responses
-    const [userText,setUserText] = useState("");
-    const [aiText,setAiText] = useState(""); 
+    const [userText, setUserText] = useState("");
+    const [aiText, setAiText] = useState("");
 
     // State for listening status (we only use the setter, not the value)
-    const [, setListening] = useState(false); 
+    const [, setListening] = useState(false);
 
     // Refs for persisting values across renders
     const isSpeakingRef = useRef(false);      // Tracks if TTS (Text-to-Speech) is currently speaking
     const recognitionRef = useRef(null);      // Holds recognition instance
     const isRecognizingRef = useRef(false);   // Tracks if speech recognition is active
-    const [ham,setHam] = useState(false);     // Toggle for mobile hamburger menu
+    const [ham, setHam] = useState(false);     // Toggle for mobile hamburger menu
 
     //  Logout logic
     const handleLogOut = async () => {
@@ -465,11 +465,12 @@ function Home() {
 
         //  On successful recognition of speech
         recognition.onresult = async (e) => {
-            const transcript = Array.from(e.results)
-                .map(result => result[0].transcript)
-                .join("");
+            // Get only the latest result instead of all results
+            const lastResultIndex = e.results.length - 1;
+            const transcript = e.results[lastResultIndex][0].transcript;
 
             console.log("Transcript:", transcript);
+            console.log("Confidence:", e.results[lastResultIndex][0].confidence);
 
             // Only respond if assistant's name is mentioned in transcript
             if (transcript.toLowerCase().includes(userData.AssistantName.toLowerCase())) {
@@ -480,15 +481,26 @@ function Home() {
                 isRecognizingRef.current = false;
                 setListening(false);
 
-                // Get AI (Gemini) response
-                const result = await getGeminiResponse(transcript);
-                console.log("Gemini result:", result);
+                try {
+                    // Get AI (Gemini) response
+                    const result = await getGeminiResponse(transcript);
+                    console.log("Gemini result:", result);
 
-                // Handle command from AI result
-                handleCommand(result);
-
-                setAiText(result.response);
-                setUserText("");
+                    // Handle command from AI result
+                    if (result) {
+                        handleCommand(result);
+                        setAiText(result.response || "");
+                    } else {
+                        setAiText("Sorry, I didn't get a response.");
+                        speak("Sorry, I didn't get a response.");
+                    }
+                } catch (error) {
+                    console.error("Error processing command:", error);
+                    setAiText("Sorry, something went wrong.");
+                    speak("Sorry, something went wrong.");
+                } finally {
+                    setUserText("");
+                }
             }
         };
 
@@ -512,10 +524,21 @@ function Home() {
 
     //  Handle assistant commands (based on Gemini response type)
     const handleCommand = (data) => {
+        // Validate data exists
+        if (!data) {
+            console.error("No data received in handleCommand");
+            speak("Sorry, I didn't receive any data.");
+            return;
+        }
+
         const { type, userInput, response } = data;
 
         // Speak the AI's response if available
-        if (response) speak(response);
+        if (response) {
+            speak(response);
+        } else {
+            console.warn("No response text to speak");
+        }
 
         switch (type) {
             case 'google_search':
@@ -548,27 +571,29 @@ function Home() {
             case 'get_day':
             case 'get_month':
             case 'general':
-                // For general responses, only TTS is used
+            case 'error':
+                // For general responses and errors, only TTS is used
                 break;
             default:
+                console.warn("Unknown command type:", type);
                 speak("Sorry, I couldn't understand the command.");
                 break;
         }
     };
 
     // JSX UI for Home component
-   return (
+    return (
         <div className="w-full h-screen bg-gradient-to-br from-[#020202] via-[#020022] to-[#000306] flex flex-col items-center justify-between relative overflow-hidden px-4 py-6">
 
             {/* Mobile hamburger menu */}
-            <RiMenu3Line 
-                className="lg:hidden text-white absolute top-4 right-4 w-7 h-7 cursor-pointer" 
-                onClick={()=>{setHam(true)}} 
+            <RiMenu3Line
+                className="lg:hidden text-white absolute top-4 right-4 w-7 h-7 cursor-pointer"
+                onClick={() => { setHam(true) }}
             />
             <div className={`lg:hidden fixed top-0 left-0 w-full h-full bg-[#000000bb] backdrop-blur-md flex flex-col gap-6 items-start p-6 z-50 transform ${ham ? "translate-x-0" : "translate-x-full"} transition-transform duration-300`}>
-                <RxCross2 
-                    className="text-white absolute top-0 right-[-2px] w-7 h-7 cursor-pointer" 
-                    onClick={()=>{setHam(false)}} 
+                <RxCross2
+                    className="text-white absolute top-0 right-[-2px] w-7 h-7 cursor-pointer"
+                    onClick={() => { setHam(false) }}
                 />
                 <button
                     onClick={handleLogOut}
@@ -623,23 +648,23 @@ function Home() {
                 </h1>
 
                 {/* Audio Animation */}
-               
-{/* Audio Animation */}
-<div className="flex items-center justify-center mt-3">
-    {!aiText ? (
-        <img 
-            src={img2} 
-            alt="listening" 
-            className="h-[120px] w-[800px]" 
-        />
-    ) : (
-        <img 
-            src={img1} 
-            alt="speaking" 
-            className="h-[120px] w-[800px] " 
-        />
-    )}
-</div>
+
+                {/* Audio Animation */}
+                <div className="flex items-center justify-center mt-3">
+                    {!aiText ? (
+                        <img
+                            src={img2}
+                            alt="listening"
+                            className="h-[120px] w-[800px]"
+                        />
+                    ) : (
+                        <img
+                            src={img1}
+                            alt="speaking"
+                            className="h-[120px] w-[800px] "
+                        />
+                    )}
+                </div>
 
 
 

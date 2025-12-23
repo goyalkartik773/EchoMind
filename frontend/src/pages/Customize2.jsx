@@ -54,7 +54,7 @@ function Customize2() {
 
       {/* Heading */}
       <h1 className="text-white text-[22px] sm:text-[26px] md:text-[30px] text-center mb-[20px] sm:mb-[30px] px-2">
-        Enter Your <span className="text-[dodgerblue]">Assistant Name</span>
+        Enter Your <span className="text-[dodgerblue]">EchoMind Assistant Name</span>
       </h1>
 
       {/* Input */}

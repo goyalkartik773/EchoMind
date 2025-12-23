@@ -3,7 +3,8 @@ import axios from "axios";
 import { UserDataContext } from "./UserDataContext";
 
 function UserContext({ children }) {
-  const serverUrl = "http://localhost:8000";
+  // Use environment variable for production, fallback to localhost for development
+  const serverUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   const [userData, setUserData] = useState(null);
   const [frontendImage, setFrontendImage] = useState(null);
@@ -21,19 +22,27 @@ function UserContext({ children }) {
     }
   };
 
-const getGeminiResponse = async (command) => {
-  try {
-    console.log(command);
-    const result = await axios.post(
-      `${serverUrl}/api/user/asktoassistant`,
-      { userPrompt: command }, // ✅ match backend expectation
-      { withCredentials: true }
-    );
-    return result.data;
-  } catch (err) {
-    console.error(err);
-  }
-};
+  const getGeminiResponse = async (command) => {
+    try {
+      console.log("Sending command to backend:", command);
+      const result = await axios.post(
+        `${serverUrl}/api/user/asktoassistant`,
+        { userPrompt: command }, // ✅ match backend expectation
+        { withCredentials: true }
+      );
+      console.log("Backend response:", result.data);
+      return result.data;
+    } catch (err) {
+      console.error("Error in getGeminiResponse:", err);
+      console.error("Error details:", err.response?.data || err.message);
+      // Return a fallback response instead of undefined
+      return {
+        type: "error",
+        userInput: command,
+        response: "Sorry, I'm having trouble connecting. Please check if the backend server is running."
+      };
+    }
+  };
 
 
   useEffect(() => {

@@ -53,7 +53,7 @@ function Signup() {
       >
         <h1 className="text-white text-2xl sm:text-3xl md:text-[32px] font-bold text-center leading-snug">
           Sign In to{" "}
-          <span className="text-[#55ff00]">Virtual Assistant</span>
+          <span className="text-[#55ff00]">EchoMind</span>
         </h1>
 
         {/* Email */}

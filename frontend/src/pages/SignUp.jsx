@@ -50,7 +50,7 @@ function Signup() {
         onSubmit={handleSignUp}
       >
         <h1 className="text-white text-2xl sm:text-3xl md:text-[32px] font-bold text-center leading-snug">
-          Register to <span className="text-[#00ccff]">Virtual Assistant</span>
+          Register to <span className="text-[#00ccff]">EchoMind</span>
         </h1>
 
         {/* Name */}

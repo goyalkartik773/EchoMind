@@ -40,7 +40,7 @@ function Customize() {
 
       {/* Heading */}
       <h1 className="text-white text-2xl sm:text-3xl md:text-[32px] text-center mb-8">
-        Select Your <span className="text-[dodgerblue]">Assistant Image</span>
+        Select Your <span className="text-[dodgerblue]">EchoMind Assistant Image</span>
       </h1>
 
       {/* Cards */}
