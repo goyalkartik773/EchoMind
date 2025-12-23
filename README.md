@@ -42,9 +42,19 @@ Users can create personalized assistants with custom names and avatars, execute 
 
 ### 🚀 **Live Deployment**
 
-- **Frontend:** [https://virtualechomind.netlify.app](https://virtualechomind.netlify.app)
+- **Landing Page:** [https://virtualechomind.netlify.app](https://virtualechomind.netlify.app)
+- **Try Demo:** [https://virtualechomind.netlify.app/demo](https://virtualechomind.netlify.app/demo) *(No signup required!)*
 - **Backend API:** [https://echomind-backend-a3tg.onrender.com](https://echomind-backend-a3tg.onrender.com)
 - **Repository:** [https://github.com/goyalkartik773/EchoMind](https://github.com/goyalkartik773/EchoMind)
+
+### 🎮 **Quick Start**
+
+**Want to try without signing up?** Visit the [Demo Page](https://virtualechomind.netlify.app/demo) and start using voice commands immediately!
+
+**Try saying:**
+- "Echo, what time is it?"
+- "Echo, search Google for AI"
+- "Echo, play music on YouTube"
 
 ---
 
@@ -76,6 +86,12 @@ Users can create personalized assistants with custom names and avatars, execute 
 - Social media shortcuts (Instagram, Facebook)
 - Calculator and weather access
 - Real-time time/date information
+
+### 🎮 Demo Mode
+- **Try Without Signup** - Test the assistant without creating an account
+- **Pre-configured Assistant** - Ready-to-use demo assistant named "Echo"
+- **Limited Features** - Basic voice commands and web actions (no AI responses)
+- **Perfect for Testing** - Great for trying before committing to signup
 
 ---
 
@@ -169,6 +185,12 @@ User Voice Input → Web Speech API → Frontend (React)
 
 ## 📸 Screenshots
 
+### Landing Page
+![Landing Page](screenshots/landing.png)
+
+### Demo Mode
+![Demo Page](screenshots/demo.png)
+
 ### Sign Up
 ![Sign Up Page](screenshots/signup.png)
 
@@ -227,6 +249,8 @@ VirtualAssistant/
 │   │   │   ├── UserContext.jsx     # Context provider
 │   │   │   └── UserDataContext.jsx # Context definition
 │   │   ├── pages/
+│   │   │   ├── Landing.jsx        # Landing page with CTA buttons
+│   │   │   ├── Demo.jsx           # Demo mode (no signup required)
 │   │   │   ├── Home.jsx            # Main assistant interface
 │   │   │   ├── SignUp.jsx          # User registration
 │   │   │   ├── Signin.jsx          # User login
