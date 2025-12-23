@@ -2,14 +2,15 @@
 
 <div align="center">
 
-![EchoMind Banner](screenshots/banner.png)
+![EchoMind Banner](screenshots/banner3.png)
 
 **A full-stack, voice-enabled virtual assistant powered by Google Gemini AI**
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://your-demo-link.netlify.app)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://virtualechomind.netlify.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-19.x-blue)](https://reactjs.org/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black)](https://github.com/goyalkartik773/EchoMind)
 
 </div>
 
@@ -38,6 +39,12 @@
 Users can create personalized assistants with custom names and avatars, execute voice commands to search the web, open applications, get time/date information, and receive AI-powered conversational responses.
 
 **Target Audience:** Developers, students, and tech enthusiasts looking for a customizable AI assistant solution.
+
+### 🚀 **Live Deployment**
+
+- **Frontend:** [https://virtualechomind.netlify.app](https://virtualechomind.netlify.app)
+- **Backend API:** [https://echomind-backend-a3tg.onrender.com](https://echomind-backend-a3tg.onrender.com)
+- **Repository:** [https://github.com/goyalkartik773/EchoMind](https://github.com/goyalkartik773/EchoMind)
 
 ---
 
@@ -258,8 +265,8 @@ VirtualAssistant/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/VirtualAssistant.git
-   cd VirtualAssistant/backend
+   git clone https://github.com/goyalkartik773/EchoMind.git
+   cd EchoMind/backend
    ```
 
 2. **Install dependencies**
@@ -438,11 +445,11 @@ Contributions are welcome! Please follow these steps:
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Kartik Goel**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourwebsite.com](https://yourwebsite.com)
+- GitHub: [@goyalkartik773](https://github.com/goyalkartik773)
+- LinkedIn: [Kartik Goel](https://www.linkedin.com/in/kartik-goel-a95b2630b)
+
 
 ---
 
@@ -460,7 +467,7 @@ Contributions are welcome! Please follow these steps:
 
 For issues, questions, or suggestions:
 
-- Open an issue on [GitHub Issues](https://github.com/yourusername/VirtualAssistant/issues)
+- Open an issue on [GitHub Issues](https://github.com/goyalkartik773/EchoMind/issues)
 - Check the [Troubleshooting Guide](./TROUBLESHOOTING.md)
 
 ---
