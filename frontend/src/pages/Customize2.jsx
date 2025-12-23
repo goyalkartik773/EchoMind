@@ -15,10 +15,22 @@ function Customize2() {
   const navigate = useNavigate();
 
   const handleUpdateAssistant = async () => {
+    // Validation
+    if (!AssistantName.trim()) {
+      toast.error("Please enter an assistant name");
+      return;
+    }
+
+    if (!backendImage && !selectedImage) {
+      toast.error("Please select an assistant image first");
+      navigate("/Customize");
+      return;
+    }
+
     setLoading(true);
     try {
       let formData = new FormData();
-      formData.append("AssistantName", AssistantName);
+      formData.append("AssistantName", AssistantName.trim());
 
       if (backendImage) {
         formData.append("AssistantImage", backendImage);
@@ -26,19 +38,45 @@ function Customize2() {
         formData.append("imageUrl", selectedImage);
       }
 
+      console.log("Sending request to create assistant...");
       const result = await axios.post(
         `${serverUrl}/api/user/update`,
         formData,
         { withCredentials: true }
       );
-      console.log(result.data);
+
+      console.log("Assistant created successfully:", result.data);
+
+      // Update user data in context
       setUserData(result.data);
+
       setLoading(false);
+
+      // Show success message
       toast.success("Assistant created successfully!");
-      navigate("/");
+
+      // Small delay to ensure state updates before navigation
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+
     } catch (err) {
-      console.log(err);
+      console.error("Error creating assistant:", err);
       setLoading(false);
+
+      // Show specific error message
+      const errorMessage = err.response?.data?.message ||
+        err.response?.data?.error ||
+        "Failed to create assistant. Please try again.";
+
+      toast.error(errorMessage);
+
+      // Log detailed error for debugging
+      console.error("Error details:", {
+        status: err.response?.status,
+        data: err.response?.data,
+        message: err.message
+      });
     }
   };
 
@@ -70,11 +108,12 @@ function Customize2() {
       {/* Button */}
       {AssistantName && (
         <button
-          className="min-w-[200px] sm:min-w-[250px] md:min-w-[300px] h-[50px] sm:h-[55px] md:h-[60px] text-black font-semibold bg-white rounded-full text-[16px] sm:text-[18px] md:text-[19px] mt-[40px] sm:mt-[50px] md:mt-[60px] cursor-pointer"
+          className={`min-w-[200px] sm:min-w-[250px] md:min-w-[300px] h-[50px] sm:h-[55px] md:h-[60px] text-black font-semibold bg-white rounded-full text-[16px] sm:text-[18px] md:text-[19px] mt-[40px] sm:mt-[50px] md:mt-[60px] transition-all ${loading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:scale-105'
+            }`}
           onClick={handleUpdateAssistant}
           disabled={loading}
         >
-          {!loading ? "Finally Create Your Assistant" : "Loading..."}
+          {!loading ? "Finally Create Your Assistant" : "Creating..."}
         </button>
       )}
     </div>
