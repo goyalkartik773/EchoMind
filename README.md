@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![EchoMind Banner](screenshots/banner3.png)
+![EchoMind Banner](screenshots/banner6.png)
 
 **A full-stack, voice-enabled virtual assistant powered by Google Gemini AI**
 
