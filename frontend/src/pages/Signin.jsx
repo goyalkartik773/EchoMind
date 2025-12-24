@@ -61,7 +61,7 @@ function Signup() {
           type="email"
           placeholder="Email"
           className="w-full h-[48px] sm:h-[55px] md:h-[60px] outline-none border border-white/40 
-          bg-white/10 text-white placeholder-gray-300 px-4 rounded-full 
+          bg-white/10 text-white placeholder-gray-100 px-4 rounded-full 
           text-sm sm:text-base md:text-[17px] focus:border-[#55ff00] transition"
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -71,7 +71,7 @@ function Signup() {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            className="w-full h-full rounded-full outline-none bg-transparent placeholder-gray-300 
+            className="w-full h-full rounded-full outline-none bg-transparent placeholder-gray-100 
             px-4 pr-10 text-white text-sm sm:text-base md:text-[17px] focus:border-[#55ff00] transition"
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -111,6 +111,56 @@ function Signup() {
             Sign Up
           </span>
         </p>
+
+        {/* Demo Section - Bold Green Theme */}
+        <div className="w-full mt-6 p-5 bg-gradient-to-br from-green-500/25 to-emerald-500/25 
+          border-2 border-[#55ff00]/60 rounded-2xl shadow-xl shadow-green-500/40">
+          <div className="text-center mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-[#55ff00]/30 
+              rounded-full mb-3 border-2 border-[#55ff00]/70">
+              <svg className="w-6 h-6 text-[#55ff00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5}
+                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5}
+                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-white font-bold text-base mb-2">
+              Try Before You Sign In
+            </h3>
+            <p className="text-gray-100 text-sm mb-4">
+              Experience EchoMind instantly - no account required!
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => navigate("/demo")}
+            className="w-full py-3 bg-gradient-to-r from-[#55ff00] to-[#38f404] 
+              text-black font-bold text-base rounded-xl
+              hover:from-[#66ff11] hover:to-[#49ff15] hover:scale-[1.02]
+              active:scale-95 transition-all duration-300 
+              shadow-lg shadow-green-500/50 hover:shadow-green-400/60
+              flex items-center justify-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5}
+                d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Launch Demo Now</span>
+          </button>
+
+          <p className="text-center text-gray-300 text-xs mt-3">
+            Or{" "}
+            <button
+              type="button"
+              onClick={() => navigate("/signup")}
+              className="text-[green] hover:text-[#66ff11] font-semibold underline"
+            >
+              create a free account
+            </button>
+          </p>
+        </div>
       </form>
     </div>
   );

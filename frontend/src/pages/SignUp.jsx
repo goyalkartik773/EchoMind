@@ -116,6 +116,42 @@ function Signup() {
             Sign In
           </span>
         </p>
+
+        {/* Demo Info Card - High Visibility Cyan */}
+        <div className="w-full mt-5 p-4 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 
+          border-2 border-cyan-400/70 rounded-xl backdrop-blur-sm shadow-lg shadow-cyan-500/30">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-10 h-10 bg-cyan-400/50 rounded-full 
+              flex items-center justify-center border-2 border-cyan-300/60">
+              <svg className="w-5 h-5 text-cyan-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-cyan-50 font-bold text-sm mb-1">
+                Not ready to sign up?
+              </h3>
+              <p className="text-white text-xs mb-3">
+                Try our demo assistant with limited features - no account needed!
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate("/demo")}
+                className="px-4 py-2 bg-cyan-400/40 border-2 border-cyan-300/80 rounded-lg
+                  text-cyan-50 text-sm font-bold hover:bg-cyan-400/50 hover:border-cyan-200
+                  flex items-center gap-2 group transition-all shadow-md"
+              >
+                <span>Launch Demo</span>
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   );
